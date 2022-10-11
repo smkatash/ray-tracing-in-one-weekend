@@ -1,8 +1,20 @@
-#include "../include/objectlist.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   vector copy.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/11 12:36:13 by ktashbae          #+#    #+#             */
+/*   Updated: 2022/10/11 12:56:45 by ktashbae         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-t_vector*   vector_new(size_t size, size_t width)
+#include "vector.h"
+
+t_vector*	vector_new(size_t size, size_t width)
 {
-	t_vector    *new;
+	t_vector	*new;
 
 	new = malloc(sizeof(t_vector));
 	if (!new)

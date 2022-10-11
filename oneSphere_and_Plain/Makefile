@@ -3,21 +3,21 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+         #
+#    By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/18 09:01:25 by kanykei           #+#    #+#              #
-#    Updated: 2022/10/11 10:36:55 by kanykei          ###   ########.fr        #
+#    Updated: 2022/10/11 14:29:40 by ktashbae         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 VPATH	=	src
 NAME = rtObject
 
-SRC = main.c color.c vec3.c camera.c ray.c sphere.c
+SRC = main.c color.c vec3.c camera.c ray.c sphere.c objectlist.c vector.c
 
 OBJ = $(addprefix obj/,$(notdir $(SRC:.c=.o)))
 CC = gcc
-CFLAGS = -Wall -O3 -g -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -fsanitize=address
 HEADERS = *.h
 RM = rm -r
 RMF = rm -rf

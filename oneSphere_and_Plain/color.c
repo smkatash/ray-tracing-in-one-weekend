@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   color.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 07:44:03 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/11 08:53:54 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/10/11 15:07:03 by ktashbae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void    put_color(t_vec3 *pixels)
 {
-	int x = (int)(pixels->x * 255.999);
-	int y = (int)(pixels->y * 255.999);
-	int z = (int)(pixels->z * 255.999);
+	int x = (pixels->x * 255.999);
+	int y = (pixels->y * 255.999);
+	int z = (pixels->z * 255.999);
 	printf("%d %d %d\n", x, y, z);
 }

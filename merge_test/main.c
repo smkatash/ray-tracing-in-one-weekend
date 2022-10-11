@@ -2,49 +2,36 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "vec3.h"
-#include "rt.h"
-#include "objects.h"
+#include "camera.h"
+#include "color.h"
+#include "hittable.h"
+#include "hittableList.h"
+#include "ray.h"
+#include "sphere.h"
+#include "util.h"
+#include "vector3d.h"
 
 #define MAX_COLOR 255
 
-
-t_ray   *put_ray(t_ray  *ray, t_camera *cam, double u, double v)
+t_color* Ray_color(t_color* res, const t_ray* r, const t_object* world) 
 {
-    t_vec3 temp;
-    t_vec3 direction;
-    
-    vector_multiply_t(&temp, &cam->horizontal, u);
-    addition(&direction, &cam->lower_left_corner, &temp);
-    vector_multiply_t(&temp, &cam->vertical, v);
-    addition(&direction, &direction, &temp);
-    substraction(&direction, &direction, &cam->origin);
-    ray->origin = cam->origin;
-    ray->dir = direction;
-    return (ray);
+    t_object record;
+    t_color color = (t_color){1, 1, 1};
+    if (world->hit(&record, world, r, 0, INFINITY)) 
+    {
+        Vec3_add(&record.normal, &record.normal, &color);
+        Vec3_multS(res, &record.normal, 0.5);
+        return res;
+    }
+    t_vec3 dir;
+    Vec3_norm(&dir, &r->dir);
+    double t = 0.5*(dir.y + 1.0);
+    Vec3_multS(res, &color, (1 - t));
+    color = (t_color){0.5, 0.7, 0.7};
+    Vec3_multS(&color, &color, t);
+    Vec3_add(res, res, &color);
+    return res;
 }
-
-t_camera *set_camera(t_camera *cam, double ratio)
-{
-    t_vec3  temp;
-    t_vec3  temp1;
-    double viewport_height = 2.0;
-    double viewport_width = ratio * viewport_height;
-    double focal_length = 1.0;
-    vector_set_each(&cam->origin, 0, 0, 0);
-    vector_set_each(&cam->horizontal, viewport_width, 0, 0);
-    vector_set_each(&cam->vertical, 0, viewport_height, 0);
-    vector_set_each(&cam->focal, 0, 0, focal_length);
-    
-    vector_divide_t(&temp, &cam->horizontal, 2);
-    substraction(&temp1, &cam->origin, &temp);
-    vector_divide_t(&temp, &cam->vertical, 2);
-    substraction(&cam->lower_left_corner, &temp1, &temp);
-    vector_set_each(&temp, 0, 0, focal_length);
-    substraction(&cam->lower_left_corner, &cam->lower_left_corner, &temp);
-    return (cam);
-}
-
 
 t_objectlist* randomScene() {
     t_objectlist* world = HittableList_new();
@@ -59,14 +46,6 @@ t_objectlist* randomScene() {
     return world;
 }
 
-void    put_color(t_vec3 *pixels)
-{
-	int x = pixels->x * 255.999;
-	int y = pixels->y * 255.999;
-	int z = pixels->z * 255.999;
-	printf("%d %d %d\n", x, y, z);
-}
-
 int main() {
     // Image
     const double aspectRatio = 16.0 / 9.0;
@@ -76,11 +55,16 @@ int main() {
     t_objectlist* world = randomScene();
 
     // Camera
-    t_camera camera;
-    set_camera(&camera, aspectRatio);
+    Camera camera;
+    t_vec3 lookFrom = {10,2,3}, lookAt = {0,0,0}, temp;
+    Vec3_sub(&temp, &lookAt, &lookFrom);
+    double focusDist = 10;
+    Camera_init(&camera, lookFrom, lookAt, (t_vec3){0,1,0}, 20, aspectRatio, 0.1,
+                focusDist);
 
     // Render
     printf("P3\n%i %i\n%i\n", imageWidth, imageHeight, MAX_COLOR);
+
     double u, v;
     t_ray r;
     t_color color, curr;
@@ -91,10 +75,10 @@ int main() {
             color = (t_color){0,0,0};
             u = (double)j / (imageWidth - 1);
             v = (double)i / (imageHeight - 1);
-            put_ray(&r, &camera, u, v);
-            ray_color(&curr, &r, (t_object*)world);
-            addition(&color, &color, &curr);
-            put_color(&color);
+            Camera_getRay(&r, &camera, u, v);
+            Ray_color(&curr, &r, (t_object*)world);
+            Vec3_add(&color, &color, &curr);
+            Color_fprintln(stdout, &color);
         }
     }
 

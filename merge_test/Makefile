@@ -1,50 +1,47 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/09/18 09:01:25 by kanykei           #+#    #+#              #
-#    Updated: 2022/10/11 00:18:35 by kanykei          ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
+CC := gcc
 
-VPATH	=	src
-NAME = rtObject
+MKFILEDIR := $(strip $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST)))))
 
-SRC = main.c vec3.c sphere.c hittableList.c vector.c ray.c
+SOURCEEXT :=.c
+SOURCEDIR := $(MKFILEDIR)
+BUILDDIR := $(MKFILEDIR)/build
+INCLUDEDIR := $(MKFILEDIR)
+BINARYDIR := $(MKFILEDIR)
+BINARYNAME := rtiow
 
-OBJ = $(addprefix obj/,$(notdir $(SRC:.c=.o)))
-CC = gcc
-CFLAGS = -std=c99 -Wall -O3 -g -fsanitize=address
-HEADERS = *.h
-RM = rm -r
-RMF = rm -rf
+LDFLAGS :=
+CFLAGS := -std=c99 -Wall -O3 -g
+RUNFLAGS :=
 
-all: ${NAME}
+HEADERS := $(wildcard $(INCLUDEDIR)/*.h)
+SOURCES := $(wildcard $(SOURCEDIR)/*$(SOURCEEXT))
+OBJECTS := $(addprefix $(BUILDDIR)/,$(patsubst %$(SOURCEEXT), %.o, $(SOURCES:$(SOURCEDIR)/%=%)))
 
-${NAME} : ${OBJ} ${HEADERS}
-	@${CC} ${OBJ} -o ${NAME} -fsanitize=address
-	@echo "rtObject is compiled"
-	
-obj/%.o: %.c | obj
-	@${CC} ${CFLAGS} -c $< -o $@ 
+$(BINARYDIR)/$(BINARYNAME): $(BUILDDIR) $(OBJECTS) Makefile
+	echo $(SOURCES)
+	echo $(OBJECTS)
+	$(CC) $(OBJECTS) -o $(BINARYNAME) $(CFLAGS) $(LDFLAGS) 
 
-obj:
-	@mkdir obj
+$(BUILDDIR)/%.o: $(SOURCEDIR)/%$(SOURCEEXT) $(HEADERS)
+	$(CC) -c $< -o $@ $(CFLAGS) $(LDFLAGS) -I$(INCLUDEDIR) 
+
+$(BUILDDIR):
+	@mkdir $(BUILDDIR) || true
 
 clean:
-	@${RMF} obj
-	@echo "\033[1;32m object files deleted \033[0m"
+	@rm $(wildcard $(BUILDDIR)/*) || true
+	@rm $(BINARYDIR)/$(BINARYNAME) || true
 
-fclean: clean
-	@${RM} ${NAME}
-	@echo "\033[1;32m executable deleted \033[0m"
+run:
+	$(BINARYDIR)/$(BINARYNAME) $(RUNFLAGS)
 
-re: fclean all
+debug:
+	/usr/bin/gdb --tty=/dev/pty1 $(BINARYDIR)/$(BINARYNAME)
 
-image: ${NAME}
-	./${NAME} > image.ppm
+link: $(BINARYDIR)/$(BINARYNAME)
 
-.PHONY:	all clean fclean re image
+image: $(BINARYNAME)
+	./$(BINARYNAME) > image.ppm
+
+
+.PHONY: run clean debug link

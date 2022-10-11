@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+         #
+#    By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/18 09:01:25 by kanykei           #+#    #+#              #
-#    Updated: 2022/10/11 16:28:53 by ktashbae         ###   ########.fr        #
+#    Updated: 2022/10/11 21:02:09 by kanykei          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ SRC = main.c color.c vec3.c camera.c ray.c sphere.c objectlist.c vector.c
 
 OBJ = $(addprefix obj/,$(notdir $(SRC:.c=.o)))
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -std=c99 -O3 -g -fsanitize=address
 HEADERS = *.h
 RM = rm -r
 RMF = rm -rf

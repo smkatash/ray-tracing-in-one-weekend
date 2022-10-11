@@ -3,22 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   sphere.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 10:21:01 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/11 15:15:43 by ktashbae         ###   ########.fr       */
+/*   Updated: 2022/10/11 18:55:18 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sphere.h"
-
-void set_face_normal(t_object* object, const t_ray* r, const t_vec3* outwardNormal) 
-{
-	object->front = dot_product(&r->dir, outwardNormal) < 0;
-	object->normal = *outwardNormal;
-	if (!object->front) 
-		vector_multiply_t(&object->normal, &object->normal, -1);
-}
 
 static int  sphere_hit(const t_object* sphere, const t_ray* ray, double t_min, double t_max, t_object* record)
 {

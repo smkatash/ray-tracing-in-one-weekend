@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 07:43:31 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/11 16:17:13 by ktashbae         ###   ########.fr       */
+/*   Updated: 2022/10/11 21:13:20 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,19 @@ t_color *ray_color(t_color *color, const t_ray *ray, const t_object* scene)
 {
 	t_color		color_temp;
 	t_vec3		unit_dir;
+	t_vec3		target;
+	t_vec3		random;
 	t_object	record;;
 	double		t;
 	double		d;
 	
-	vector_set_each(&color_temp, 1, 1, 1);
 	if (scene->hit(scene, ray, 0, INFINITY, &record))
 	{
-		addition(color, &record.normal, &color_temp);
-		vector_multiply_t(color, color, 0.5);
-		return (color);
+		addition(&target, &record.point, &record.normal);
+		addition(&target, &target, random_in_unit_sphere(&random));
+		vector_set_each((t_vec3 *)&ray->origin, record.point.x, record.point.y, record.point.z);
+		substraction((t_vec3 *)&ray->dir, &target, &record.point);
+		return (vector_multiply_t(color, ray_color(color, ray, scene), 0.5));
 	}
 	unit_vector(&unit_dir, &ray->dir);
 	t = 0.5 * (unit_dir.y + 1.0);

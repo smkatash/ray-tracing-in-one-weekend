@@ -6,7 +6,7 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 07:43:31 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/11 21:13:20 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/10/13 00:01:31 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 #include "sphere.h"
 #include "rt.h"
 
-t_color *ray_color(t_color *color, const t_ray *ray, const t_object* scene)
+t_color *ray_color(t_color *color, const t_ray *ray, const t_object* scene, int depth)
 {
 	t_color		color_temp;
 	t_vec3		unit_dir;
@@ -28,13 +28,14 @@ t_color *ray_color(t_color *color, const t_ray *ray, const t_object* scene)
 	double		t;
 	double		d;
 	
-	if (scene->hit(scene, ray, 0, INFINITY, &record))
+    if (depth <= 0)
+        return vector_set_each(color, 0, 0, 0);
+	if (scene->hit(scene, ray, 0.001, INFINITY, &record))
 	{
-		addition(&target, &record.point, &record.normal);
-		addition(&target, &target, random_in_unit_sphere(&random));
+		addition(&target, &record.point, random_in_hemisphere(&random, &record.normal));
 		vector_set_each((t_vec3 *)&ray->origin, record.point.x, record.point.y, record.point.z);
 		substraction((t_vec3 *)&ray->dir, &target, &record.point);
-		return (vector_multiply_t(color, ray_color(color, ray, scene), 0.5));
+		return (vector_multiply_t(color, ray_color(color, ray, scene, depth - 1), 0.5));
 	}
 	unit_vector(&unit_dir, &ray->dir);
 	t = 0.5 * (unit_dir.y + 1.0);
@@ -55,7 +56,7 @@ t_objectlist* set_scene(void)
 	ft_list_pushback(world, (t_object*)plain);
 
 	t_sphere* ball = malloc(sizeof(t_sphere));
-	sphere_init(ball, (t_vec3){0, 0, -1}, 0.5);
+	sphere_init(ball, (t_vec3){0, 0, -1}, 0.7);
 	ft_list_pushback(world, (t_object*)ball);
 	return world;
 }
@@ -75,6 +76,7 @@ int main(void)
 	const int width = 400;
 	const int height = (int) width / ratio;
 	const int samples_per_pixel = 100;
+	const int max_depth = 30;
 
 
 	// Scene
@@ -95,7 +97,7 @@ int main(void)
 				u = (double)(w + random_double()) / (width - 1);
 				v = (double)(h + random_double()) / (height - 1);
 				put_ray(&ray, camera, u, v);
-				ray_color(&pxl_color, &ray, (t_object*)scene);
+				ray_color(&pxl_color, &ray, (t_object*)scene, max_depth);
 				addition(&merged_color, &merged_color, &pxl_color);
 			}
 			put_color(&merged_color, samples_per_pixel);

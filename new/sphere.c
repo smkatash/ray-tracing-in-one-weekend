@@ -6,7 +6,7 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 10:21:01 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/11 18:55:18 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/10/13 00:37:04 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,14 +44,16 @@ static int  sphere_hit(const t_object* sphere, const t_ray* ray, double t_min, d
 	substraction(&outward_normal, &record->point, &sph->center);
 	vector_divide_t(&outward_normal, &outward_normal, sph->radius);
 	set_face_normal(record, ray, &outward_normal);
+	record->material = sphere->material;
 	return (1);
 }
 
-void* sphere_init(t_sphere* sphere, t_vec3 center, double radius) 
+void* sphere_init(t_sphere* sphere, t_vec3 center, double radius, t_material *material) 
 {
 	sphere->center = center;
 	sphere->radius = radius;
 	sphere->base.hit = sphere_hit;
+	sphere->base.material = material;
 	return (sphere);
 }
 

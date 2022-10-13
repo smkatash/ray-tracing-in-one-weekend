@@ -6,18 +6,18 @@
 #    By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/18 09:01:25 by kanykei           #+#    #+#              #
-#    Updated: 2022/10/11 21:02:09 by kanykei          ###   ########.fr        #
+#    Updated: 2022/10/13 13:47:20 by kanykei          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 VPATH	=	src
 NAME = rtObject
 
-SRC = main.c color.c vec3.c camera.c ray.c sphere.c objectlist.c vector.c
+SRC = main.c color.c vec3.c camera.c ray.c sphere.c objectlist.c vector.c material.c
 
 OBJ = $(addprefix obj/,$(notdir $(SRC:.c=.o)))
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -std=c99 -O3 -g -fsanitize=address
+CFLAGS = -Wall -std=c11 -O3 -g -fsanitize=address
 HEADERS = *.h
 RM = rm -r
 RMF = rm -rf

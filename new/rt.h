@@ -6,7 +6,7 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 15:59:34 by ktashbae          #+#    #+#             */
-/*   Updated: 2022/10/13 00:58:40 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/10/13 10:43:45 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,5 +83,13 @@ inline int near_zero(t_vec3* vec)
 {
     return (fabs(vec->x) < NEAR_ZERO) && (fabs(vec->y) < NEAR_ZERO) && (fabs(vec->z) < NEAR_ZERO);
 }
+
+inline void* reflect(t_vec3* vec, const t_vec3* v, const t_vec3* normal) 
+{
+	vector_multiply_t(vec, normal, 2 * dot_product(v, normal));
+	substraction(vec, v, vec);
+	return (vec);
+}
+
 
 #endif

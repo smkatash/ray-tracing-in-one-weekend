@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vec3.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 07:36:30 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/11 12:57:06 by ktashbae         ###   ########.fr       */
+/*   Updated: 2022/10/13 11:47:54 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,13 @@
 #include <stdio.h>
 #include <math.h>
 
-typedef struct s_vec3 {
+typedef struct s_vec3 t_vec3;
+
+struct s_vec3 {
     double x;
     double y;
     double z;
-}				t_vec3;
+};
 
 void* addition(t_vec3* new, const t_vec3* u, const t_vec3* v);
 void* vector_add_t(t_vec3* new, const t_vec3* v, double s);

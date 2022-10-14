@@ -26,15 +26,14 @@ $ make image
   <img width="400" alt="image" src='https://github.com/smkatash/ray-traicing-in-one-weekend/blob/master/images_png/image%201.png'/>
   &nbsp;&nbsp;&nbsp;&nbsp;
   <img width="400" alt="image" src='https://github.com/smkatash/ray-traicing-in-one-weekend/blob/master/images_png/image%202.png'/>
-  <br>
   <p align="center">A sphere colored according to its normal vectors.</p> 
 </p>
 <p align="center">
   <img width="500" alt="image" src='https://github.com/smkatash/ray-traicing-in-one-weekend/blob/master/images_png/image%203.png' /> 
-  <p align="justify"> <br>Resulting render of normals-colored sphere with ground.</br> </p>
+  <p align="center"> Resulting render of normals-colored sphere with ground. </p>
 </p>
   <img width="500" alt="image" src='https://github.com/smkatash/ray-traicing-in-one-weekend/blob/master/images_png/image%204.png'/> 
-  <p align="justify"> <br>First render of a diffuse sphere.</br></p>
+  <p align="center"> First render of a diffuse sphere.</p>
 </p>
 <p align="center">
   <img width="400" alt="image" src='https://github.com/smkatash/ray-traicing-in-one-weekend/blob/master/images_png/image%205.png' />   

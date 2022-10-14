@@ -23,7 +23,7 @@ $ make image
 ## Output of images in each chapter:
 
 <p align="center">
-  <img width="400" alt="image" <sub>A sphere colored according to its normal vectors</sub> src='https://github.com/smkatash/ray-traicing-in-one-weekend/blob/master/images_png/image%201.png' />   
+  <img width="400" <sub>A sphere colored according to its normal vectors</sub> src='https://github.com/smkatash/ray-traicing-in-one-weekend/blob/master/images_png/image%201.png' />   
   &nbsp;&nbsp;&nbsp;&nbsp;
   <img width="400" alt="image" src='https://github.com/smkatash/ray-traicing-in-one-weekend/blob/master/images_png/image%202.png'/> 
 </p>

@@ -37,14 +37,18 @@ $ make image
   <p align="center"> First render of a diffuse sphere.</p>
 </p>
 <p align="center">
-  <img width="400" alt="image" src='https://github.com/smkatash/ray-traicing-in-one-weekend/blob/master/images_png/image%205.png' />   
-  &nbsp;&nbsp;&nbsp;&nbsp;
-  <img width="400" alt="image" src='https://github.com/smkatash/ray-traicing-in-one-weekend/blob/master/images_png/image%206.png'/> 
+  <img width="500" alt="image" src='https://github.com/smkatash/ray-traicing-in-one-weekend/blob/master/images_png/image%205.png' />   
+  <p align="center"> Diffuse sphere, with gamma correction.</p>
+</p>
+<p align="center">
+  <img width="500" alt="image" src='https://github.com/smkatash/ray-traicing-in-one-weekend/blob/master/images_png/image%206.png'/> 
+  <p align="center"> Correct rendering of Lambertian spheres.</p>
 </p>
 <p align="center">
   <img width="400" alt="image" src='https://github.com/smkatash/ray-traicing-in-one-weekend/blob/master/images_png/image%207.png' />   
   &nbsp;&nbsp;&nbsp;&nbsp;
   <img width="400" alt="image" src='https://github.com/smkatash/ray-traicing-in-one-weekend/blob/master/images_png/image%208.png'/> 
+  <p align="center">Rendering of diffuse spheres with hemispherical scattering.</p>
 </p>
 <p align="center">
   <img width="400" alt="image" src='https://github.com/smkatash/ray-traicing-in-one-weekend/blob/master/images_png/image%209.png' />   

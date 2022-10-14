@@ -16,7 +16,7 @@ $ make image
 ```
 ## Output of final image:
 
-<img width="600" alt="image" src='https://github.com/smkatash/ray-traicing-in-one-weekend/blob/master/images_png/image%2015.png'>
+<img align="center" width="600" alt="image" src='https://github.com/smkatash/ray-traicing-in-one-weekend/blob/master/images_png/image%2015.png'>
 
 ## Output of images in each chapter:
 

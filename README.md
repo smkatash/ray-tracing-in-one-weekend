@@ -32,6 +32,7 @@ $ make image
   <img width="500" alt="image" src='https://github.com/smkatash/ray-traicing-in-one-weekend/blob/master/images_png/image%203.png' /> 
   <p align="center"> Resulting render of normals-colored sphere with ground. </p>
 </p>
+<p align="center">
   <img width="500" alt="image" src='https://github.com/smkatash/ray-traicing-in-one-weekend/blob/master/images_png/image%204.png'/> 
   <p align="center"> First render of a diffuse sphere.</p>
 </p>

@@ -22,7 +22,7 @@ $ make image
 
 ## Output of images in each chapter:
 
-<p float="left">
+<p float="center">
   <img width="400" alt="image" src='https://github.com/smkatash/ray-traicing-in-one-weekend/blob/master/images_png/image%201.png' /> 
   <img width="400" alt="image" src='https://github.com/smkatash/ray-traicing-in-one-weekend/blob/master/images_png/image%202.png'/> 
 </p>

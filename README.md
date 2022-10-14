@@ -34,7 +34,7 @@ $ make image
   &nbsp;&nbsp;&nbsp;&nbsp;
   <img width="400" alt="image" src='https://github.com/smkatash/ray-traicing-in-one-weekend/blob/master/images_png/image%204.png'/> 
   <br>
-  <em>Resulting render of normals-colored sphere with ground.</em> &nbsp;
+  <em float="left">Resulting render of normals-colored sphere with ground.</em> &nbsp;
   <em>First render of a diffuse sphere.</em>
 </p>
 <p align="center">

@@ -1,4 +1,4 @@
-# Ray Traying in C
+# Ray Traicing in C
 
 This is my C implementation of "ray traiced" image rendering on the basis of a book ["Ray Tracing in One Weekend"](https://raytracing.github.io/)
 The output of images is a PPM(P3) file.

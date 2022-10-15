@@ -67,8 +67,10 @@ $ make image
 <p align="center">
   <img width="400" alt="image" src='https://github.com/smkatash/ray-traicing-in-one-weekend/blob/master/images_png/image%2012.png' />   
   &nbsp;&nbsp;&nbsp;&nbsp;
-  <img width="400" alt="image" src='https://github.com/smkatash/ray-traicing-in-one-weekend/blob/master/images_png/image%2013.png'/> 
+   <img width="400" alt="image" src='https://github.com/smkatash/ray-traicing-in-one-weekend/blob/master/images_png/image%2014.png' /> 
+    <p align="center">A distand view.</p>
 </p>
 <p align="center">
-  <img width="400" alt="image" src='https://github.com/smkatash/ray-traicing-in-one-weekend/blob/master/images_png/image%2014.png' /> 
+  <img width="400" alt="image" src='https://github.com/smkatash/ray-traicing-in-one-weekend/blob/master/images_png/image%2013.png'/> 
+   <p align="center">Zooming in.</p>
 </p>

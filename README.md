@@ -75,3 +75,9 @@ $ make image
   <img width="400" alt="image" src='https://github.com/smkatash/ray-traicing-in-one-weekend/blob/master/images_png/image%2013.png'/> 
    <p align="center">Zooming in.</p>
 </p>
+<p align="center">
+  <img width="400" alt="image" src='https://github.com/smkatash/ray-traicing-in-one-weekend/blob/master/images_png/image%2016.png' />   
+  &nbsp;&nbsp;&nbsp;&nbsp;
+   <img width="400" alt="image" src='https://github.com/smkatash/ray-traicing-in-one-weekend/blob/master/images_png/image%2017.png' /> 
+    <p align="center">Changing views and colors.</p>
+</p>

@@ -61,9 +61,8 @@ $ make image
   <p align="center">Glass sphere that sometimes refracts.</p>
 </p>
 <p align="center">
-  <img width="400" alt="image" src='https://github.com/smkatash/ray-traicing-in-one-weekend/blob/master/images_png/image%2010.png' />   
-  &nbsp;&nbsp;&nbsp;&nbsp;
   <img width="400" alt="image" src='https://github.com/smkatash/ray-traicing-in-one-weekend/blob/master/images_png/image%2011.png'/> 
+  <p align="center">Shiny metal.</p>
 </p>
 <p align="center">
   <img width="400" alt="image" src='https://github.com/smkatash/ray-traicing-in-one-weekend/blob/master/images_png/image%2012.png' />   

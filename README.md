@@ -55,7 +55,7 @@ $ make image
   <p align="center">Implementation of different materials. Fuzzed metal.</p>
 </p>
 <p align="center">
-  <img width="400" alt="image" src='https://github.com/smkatash/ray-traicing-in-one-weekend/blob/master/images_png/image%209.2' />   
+  <img width="400" alt="image" src='https://github.com/smkatash/ray-traicing-in-one-weekend/blob/master/images_png/image%209.2.png' />   
   &nbsp;&nbsp;&nbsp;&nbsp;
   <img width="400" alt="image" src='https://github.com/smkatash/ray-traicing-in-one-weekend/blob/master/images_png/image%2010.png'/> 
   <p align="center">Glass sphere that sometimes refracts.</p>

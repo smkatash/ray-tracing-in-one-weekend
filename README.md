@@ -6,7 +6,7 @@ The output of images is a PPM(P3) file.
 
 ```bash
 # Clone this project
-$ https://github.com/smkatash/ray-traicing-in-one-weekend
+$ https://github.com/smkatash/ray-tracing-in-one-weekend
 
 # Run the program
 $ make

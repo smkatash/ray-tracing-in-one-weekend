@@ -21,7 +21,7 @@ $ make image
   <img width="800" src="https://github.com/smkatash/ray-traicing-in-one-weekend/blob/master/images_png/image%2015.png">
 </p>
 <p align="center">
-   <img width="800" alt="image" src='https://github.com/smkatash/ray-traicing-in-one-weekend/blob/master/images_png/image%2016.png' />   
+   <img width="600" alt="image" src='https://github.com/smkatash/ray-traicing-in-one-weekend/blob/master/images_png/image%2016.png' />   
     <p align="center">Changing views and colors.</p>
 </p>
 
